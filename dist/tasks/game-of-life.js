@@ -1,45 +1,57 @@
 "use strict";
 const size = 50;
 let grid = Array.from({ length: size }, () => Array.from({ length: size }, () => "💀"));
-console.log("🚀 ~ grid:", grid);
 function randomizePopulation() {
     grid = Array.from({ length: size }, () => Array.from({ length: size }, () => (Math.random() > 0.5 ? "😊" : "💀")));
 }
 randomizePopulation();
-console.log("🚀 ~ grid:", grid);
-setInterval(() => {
-    runGameCycle();
-}, 300000);
+renderGrid(grid);
+function renderGrid(g) {
+    const output = g.map((row) => row.join(" ")).join("\n");
+    console.log(output);
+}
 function runGameCycle() {
-    const newGrid = [];
+    const newGrid = Array.from({ length: size }, () => Array.from({ length: size }, () => "💀"));
     grid.forEach((row, rowI) => {
-        return row.forEach((population, pI) => {
+        row.forEach((population, pI) => {
             let aliveNeighborCount = 0;
-            console.log("🚀 ~ runGameCycle ~ aliveNeighborCount:", aliveNeighborCount);
-            let deadNeighborCount = 0;
-            console.log("🚀 ~ runGameCycle ~ deadNeighborCount:", deadNeighborCount);
-            const topNeighbor = grid?.[rowI + 1]?.[pI];
-            const bottomNeighbor = grid?.[rowI - 1]?.[pI];
-            const leftNeighbor = grid?.[rowI]?.[pI - 1];
-            const rightNeighbor = grid?.[rowI]?.[pI + 1];
-            const allN = [topNeighbor, bottomNeighbor, leftNeighbor, rightNeighbor];
-            allN.forEach((n) => {
-                if (n === "💀")
-                    deadNeighborCount += 1;
+            const neighbors = [
+                grid?.[rowI - 1]?.[pI - 1],
+                grid?.[rowI - 1]?.[pI],
+                grid?.[rowI - 1]?.[pI + 1],
+                grid?.[rowI]?.[pI - 1],
+                grid?.[rowI]?.[pI + 1],
+                grid?.[rowI + 1]?.[pI - 1],
+                grid?.[rowI + 1]?.[pI],
+                grid?.[rowI + 1]?.[pI + 1],
+            ];
+            neighbors.forEach((n) => {
                 if (n === "😊")
                     aliveNeighborCount += 1;
             });
-            if ((population = "😊")) {
+            // apply rules
+            if (population === "😊") {
+                if (aliveNeighborCount < 2 || aliveNeighborCount > 3) {
+                    newGrid[rowI][pI] = "💀"; // dies
+                }
+                else {
+                    newGrid[rowI][pI] = "😊"; // survives
+                }
             }
-            // logs moved to bottom
-            //   console.log("🚀 neighbors:", {
-            //     topNeighbor,
-            //     bottomNeighbor,
-            //     leftNeighbor,
-            //     rightNeighbor,
-            //   });
-            //   console.warn("////");
+            else {
+                if (aliveNeighborCount === 3) {
+                    newGrid[rowI][pI] = "😊"; // reproduction
+                }
+                else {
+                    newGrid[rowI][pI] = "💀";
+                }
+            }
         });
     });
     return newGrid;
 }
+setInterval(() => {
+    grid = runGameCycle();
+    console.clear();
+    renderGrid(grid);
+}, 1000);
