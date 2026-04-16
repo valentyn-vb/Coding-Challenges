@@ -95,7 +95,6 @@ function sortString(value: string) {
     const index = letters.find((letter) => !!Number(letter)) as any;
     sortedArray.splice(index - 1, 1, word);
   });
-  console.log("🚀 ~ sortString ~ sortedArray:", sortedArray);
 
   return sortedArray.join(" ");
 }
@@ -135,7 +134,7 @@ const alphabet = [
   "Z",
 ];
 
-const findTheMissingLetter = (arr) => {
+const findTheMissingLetter = (arr: any) => {
   const findRegister =
     arr[0] === arr[0].toUpperCase() ? "toUpperCase" : "toLowerCase";
 
