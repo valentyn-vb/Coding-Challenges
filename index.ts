@@ -163,9 +163,40 @@ const findTheMissingLetter = (arr) => {
 };
 
 console.log(findTheMissingLetter(["a", "b", "c", "d", "f"]));
-
 console.log(findTheMissingLetter(["O", "Q", "R", "S"]));
-
 console.log(findTheMissingLetter(["O", "Q"]));
-
 console.warn("//////////");
+
+//Who likes it?
+
+function generateMessage(users: string[]) {
+  let result = "";
+
+  if (!users.length) {
+    result = "no one likes this";
+  } else if (users.length === 1) {
+    result = `${users[0]} likes this`;
+  } else if (users.length === 2) {
+    result = `${users[0]} and ${users[1]} like this`;
+  } else if (users.length === 3) {
+    result = `${users[0]}, ${users[1]} and ${users[2]} like this`;
+  } else {
+    result = `${users[0]}, ${users[1]} and ${users.length - 2} others like this`;
+  }
+
+  return result;
+}
+
+console.log('Expected: "Peter likes this", Real:', generateMessage(["Peter"]));
+console.log(
+  'Expected: "Jacob and Alex like this", Real:',
+  generateMessage(["Jacob", "Alex"]),
+);
+console.log(
+  'Expected: "Max, John and Mark like this", Real:',
+  generateMessage(["Max", "John", "Mark"]),
+);
+console.log(
+  'Expected: "Alex, Jacob and 2 others like this", Real:',
+  generateMessage(["Alex", "Jacob", "Mark", "Max"]),
+);
