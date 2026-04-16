@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.sortString = sortString;
-function sortString(value) {
+export function sortString(value) {
     if (!value.length) {
         return "";
     }

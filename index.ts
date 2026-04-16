@@ -1,8 +1,9 @@
-import { maskValue } from "./tasks/credit-card-mask";
-import { findTheMissingLetter } from "./tasks/find-the-missing-letter";
-import { USERS, sortUserByStatus } from "./tasks/who-is-online";
-import { generateMessage } from "./tasks/who-likes-it";
-import { sortString } from "./tasks/your-order-please";
+import { maskValue } from "./tasks/credit-card-mask.js";
+import { findTheMissingLetter } from "./tasks/find-the-missing-letter.js";
+import "./tasks/game-of-life.js";
+import { USERS, sortUserByStatus } from "./tasks/who-is-online.js";
+import { generateMessage } from "./tasks/who-likes-it.js";
+import { sortString } from "./tasks/your-order-please.js";
 
 console.log("Who’s Online?", sortUserByStatus(USERS));
 console.warn("////////////////////////");

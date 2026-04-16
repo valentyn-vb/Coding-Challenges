@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "lib": ["dom"],
-    "module": "commonjs",
+    "lib": ["DOM", "ES2025"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "outDir": "dist",
     "strict": true,
     "target": "es2025"

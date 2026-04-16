@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.findTheMissingLetter = findTheMissingLetter;
 const alphabet = [
     "A",
     "B",
@@ -29,7 +26,7 @@ const alphabet = [
     "Y",
     "Z",
 ];
-function findTheMissingLetter(arr) {
+export function findTheMissingLetter(arr) {
     const registerMethod = arr[0] === arr[0].toUpperCase() ? "toUpperCase" : "toLowerCase";
     let missingLetter = "";
     const firstLetterIndex = alphabet.findIndex((letter) => letter === arr[0].toUpperCase());

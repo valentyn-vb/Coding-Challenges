@@ -1,8 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.USERS = void 0;
-exports.sortUserByStatus = sortUserByStatus;
-exports.USERS = [
+export const USERS = [
     {
         username: "David",
         status: "online",
@@ -19,7 +15,7 @@ exports.USERS = [
         lastActivity: 104,
     },
 ];
-function sortUserByStatus(users) {
+export function sortUserByStatus(users) {
     return users.reduce((acc, user) => {
         const { status, lastActivity } = user;
         if (status === "online") {

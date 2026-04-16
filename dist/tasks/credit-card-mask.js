@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.maskValue = maskValue;
-function maskValue(value) {
+export function maskValue(value) {
     if (value.length <= 4) {
         return value;
     }

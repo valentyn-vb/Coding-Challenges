@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateMessage = generateMessage;
-function generateMessage(users) {
+export function generateMessage(users) {
     let result = "";
     if (!users.length) {
         result = "no one likes this";
