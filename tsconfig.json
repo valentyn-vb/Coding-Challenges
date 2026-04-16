@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "lib": ["dom"],
+    "module": "commonjs",
+    "outDir": "dist",
+    "strict": true,
+    "target": "es2025"
+  },
+  "include": ["./"]
+}
